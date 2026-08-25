@@ -1,13 +1,13 @@
 """
-Test suite for DeepSeek-V4 Encoding.
+Test suite for Vedika-Code-Pro-v1 Encoding.
 
-Run: python test_encoding_dsv4.py
+Run: python test_encoding_vedika.py
 """
 
 import json
 import os
 
-from encoding_dsv4 import encode_messages, parse_message_from_completion_text
+from encoding_vedika import encode_messages, parse_message_from_completion_text
 
 TESTS_DIR = os.path.join(os.path.dirname(__file__), "tests")
 
@@ -81,7 +81,7 @@ def test_case_4():
 
 
 if __name__ == "__main__":
-    print("Running DeepSeek-V4 Encoding Tests...\n")
+    print("Running Vedika-Code-Pro-v1 Encoding Tests...\n")
     test_case_1()
     test_case_2()
     test_case_3()

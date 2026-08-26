@@ -9,7 +9,7 @@ library_name: transformers
 <!-- markdownlint-disable no-duplicate-header -->
 
 <div align="center">
-  <img src="https://github.com/vedalabs-tech/Vedika-Code-Pro-v1/blob/main/figures/logo.svg?raw=true" width="60%" alt="Vedika-Code-Pro-v1" />
+  <img src="778985201_2399197484237416_4545083293112769701_n-1.webp" width="60%" alt="Vedika-Code-Pro-v1" />
 </div>
 <hr>
 <div align="center" style="line-height: 1;">

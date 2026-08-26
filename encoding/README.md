@@ -1,6 +1,6 @@
-# DeepSeek-V4 Encoding
+# Vedika-Code-Pro-v1 Encoding
 
-This document describes the prompt encoding format used by DeepSeek-V4 series models. The encoding handles multi-turn conversations, tool calling, extended thinking (reasoning), and quick instruction tasks.
+This document describes the prompt encoding format used by Vedika-Code-Pro-v1 series models. The encoding handles multi-turn conversations, tool calling, extended thinking (reasoning), and quick instruction tasks.
 
 A self-contained reference implementation is provided in `encoding_dsv4.py`.
 

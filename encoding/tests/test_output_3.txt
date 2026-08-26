@@ -1,4 +1,4 @@
-<｜begin▁of▁sentence｜>该助手为DeepSeek，由深度求索公司创造。<｜latest_reminder｜>2026-02-21,星期六,广州,App,中文<｜User｜>小柴胡冲剂和布洛芬能一起吃吗？
+<｜begin▁of▁sentence｜>该助手为Vedika-Code-Pro-v1，由Veda Labs创造。<｜latest_reminder｜>2026-02-21,星期六,广州,App,中文<｜User｜>小柴胡冲剂和布洛芬能一起吃吗？
 
 CITATION FORMAT: 【{cursor_id}†L{start_line_id}(-L{end_line_id})?】
 

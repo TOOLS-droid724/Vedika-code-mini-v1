@@ -9,12 +9,12 @@ library_name: transformers
 <!-- markdownlint-disable no-duplicate-header -->
 
 <div align="center">
-  <img src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg?raw=true" width="60%" alt="Vedika-Code-Pro-v1" />
+  <img src="https://github.com/vedalabs-tech/Vedika-Code-Pro-v1/blob/main/figures/logo.svg?raw=true" width="60%" alt="Vedika-Code-Pro-v1" />
 </div>
 <hr>
 <div align="center" style="line-height: 1;">
   <a href="https://vedalabs.online" target="_blank" style="margin: 2px;">
-    <img alt="Homepage" src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/badge.svg?raw=true" style="display: inline-block; vertical-align: middle;"/>
+    <img alt="Homepage" src="https://github.com/vedalabs-tech/Vedika-Code-Pro-v1/blob/main/figures/badge.svg?raw=true" style="display: inline-block; vertical-align: middle;"/>
   </a>
   <a href="https://huggingface.co/Veda-Labs" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Vedika--Code--Pro--v1-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>

@@ -101,7 +101,7 @@ def main(
     print("load model")
     load_model(model, os.path.join(ckpt_path, f"model{rank}-mp{world_size}.safetensors"), strict=False)
     torch.set_default_device("cuda")
-    print("I'm DeepSeek 👋")
+    print("I'm Vedika-Code-Pro-v1 👋")
 
     if interactive:
         messages = []

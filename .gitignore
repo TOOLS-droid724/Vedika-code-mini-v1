@@ -3,30 +3,53 @@
 *.pyc
 __pycache__/
 
-# Test coverage reports
-.coverage
-htmlcov/
-.coverage.*
-
-# Python virtual environments
+# Virtual environments
 venv/
 .venv/
-.env
-.env.local
-*.env.*
+env/
 
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
+# Dependencies
+node_modules/
 
 # Logs
 *.log
 
-# Build and distribution artifacts
-build/
+# Temporary files
+*.tmp
+*.swp
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Coverage reports
+.coverage
+coverage/
+htmlcov/
+
+# IDE files
+.vscode/
+.idea/
+*.swo
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build outputs
 dist/
-*.egg-info/
+build/
+target/
+*.out
+*.exe
+*.dll
+*.so
+*.a
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.gradle/
 ```

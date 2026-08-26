@@ -2,12 +2,12 @@
 
 This document describes the prompt encoding format used by Vedika-Code-Pro-v1 series models. The encoding handles multi-turn conversations, tool calling, extended thinking (reasoning), and quick instruction tasks.
 
-A self-contained reference implementation is provided in `encoding_dsv4.py`.
+A self-contained reference implementation is provided in `encoding_vedika_code_pro_v1.py`.
 
 ## Quick Start
 
 ```python
-from encoding_dsv4 import encode_messages, parse_message_from_completion_text
+from encoding_vedika_code_pro_v1 import encode_messages, parse_message_from_completion_text
 
 # Encode a conversation
 messages = [

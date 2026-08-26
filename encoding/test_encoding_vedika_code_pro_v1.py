@@ -1,13 +1,13 @@
 """
 Test suite for Vedika-Code-Pro-v1 Encoding.
 
-Run: python test_encoding_dsv4.py
+Run: python test_encoding_vedika_code_pro_v1.py
 """
 
 import json
 import os
 
-from encoding_dsv4 import encode_messages, parse_message_from_completion_text
+from encoding_vedika_code_pro_v1 import encode_messages, parse_message_from_completion_text
 
 TESTS_DIR = os.path.join(os.path.dirname(__file__), "tests")
 

@@ -63,7 +63,7 @@ This release does not include a Jinja-format chat template. Instead, we provide 
 A brief example:
 
 ```python
-from encoding_dsv4 import encode_messages, parse_message_from_completion_text
+from encoding_vedika_code_pro_v1 import encode_messages, parse_message_from_completion_text
 
 messages = [
     {"role": "user", "content": "hello"},

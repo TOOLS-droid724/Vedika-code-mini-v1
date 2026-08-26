@@ -767,7 +767,7 @@ class MTPBlock(Block):
 
 
 class Transformer(nn.Module):
-    """Full Vedika-Code-Pro-v1 model: embed -> HC-expand -> N blocks -> HC-head -> logits.
+    """Full DeepSeek-V4 model: embed -> HC-expand -> N blocks -> HC-head -> logits.
     Sets global state (world_size, rank, default_dtype, scale_fmt, scale_dtype) in __init__."""
     def __init__(self, args: ModelArgs):
         global world_size, rank, default_dtype, scale_fmt, scale_dtype

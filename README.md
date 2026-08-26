@@ -2,25 +2,30 @@
 license: mit
 library_name: transformers
 ---
-# Vedika-Code-Pro-v1: Towards Highly Efficient Million-Token Context Intelligence
+# DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence
 
 <!-- markdownlint-disable first-line-h1 -->
 <!-- markdownlint-disable html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
 <div align="center">
-  <img src="https://github.com/vedalabs-tech/Vedika-Code-Pro-v1/blob/main/figures/logo.svg?raw=true" width="60%" alt="Vedika-Code-Pro-v1" />
+  <img src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg?raw=true" width="60%" alt="DeepSeek-V4" />
 </div>
 <hr>
 <div align="center" style="line-height: 1;">
-  <a href="https://vedalabs.online" target="_blank" style="margin: 2px;">
-    <img alt="Homepage" src="https://github.com/vedalabs-tech/Vedika-Code-Pro-v1/blob/main/figures/badge.svg?raw=true" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://www.deepseek.com/" target="_blank" style="margin: 2px;">
+    <img alt="Homepage" src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/badge.svg?raw=true" style="display: inline-block; vertical-align: middle;"/>
   </a>
-  <a href="https://huggingface.co/Veda-Labs" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Veda%20Labs-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://chat.deepseek.com/" target="_blank" style="margin: 2px;">
+    <img alt="Chat" src="https://img.shields.io/badge/🤖%20Chat-DeepSeek%20V4-536af5?color=536af5&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
   </a>
-  <a href="https://x.com/VedaLabsAI" target="_blank" style="margin: 2px;">
-    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-VedaLabsAI-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+</div>
+<div align="center" style="line-height: 1;">
+  <a href="https://huggingface.co/deepseek-ai" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DeepSeek%20AI-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://twitter.com/deepseek_ai" target="_blank" style="margin: 2px;">
+    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-deepseek_ai-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
   </a>
 </div>
 <div align="center" style="line-height: 1;">
@@ -35,20 +40,20 @@ library_name: transformers
 
 ## Introduction
 
-We present a preview version of **Vedika-Code-Pro-v1** series, including two strong Mixture-of-Experts (MoE) language models — **Vedika-Code-Pro-v1** with 1.6T parameters (49B activated) and **Vedika-Code-Flash-v1** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**.
+We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**.
 
-Vedika-Code-Pro-v1 series incorporate several key upgrades in architecture and optimization:
+DeepSeek-V4 series incorporate several key upgrades in architecture and optimization:
 
-1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, Vedika-Code-Pro-v1 requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with Vedika-Code-Pro-v1.
+1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2.
 2. **Manifold-Constrained Hyper-Connections (mHC):** We incorporate mHC to strengthen conventional residual connections, enhancing stability of signal propagation across layers while preserving model expressivity.
 3. **Muon Optimizer:** We employ the Muon optimizer for faster convergence and greater training stability.
 
 We pre-train both models on more than **32T** diverse and high-quality tokens, followed by a comprehensive post-training pipeline. The post-training features a two-stage paradigm: independent cultivation of domain-specific experts (through SFT and RL with GRPO), followed by unified model consolidation via on-policy distillation, integrating distinct proficiencies across diverse domains into a single model.
 
-**Vedika-Code-Pro-v1-Max**, the maximum reasoning effort mode of Vedika-Code-Pro-v1, significantly advances the knowledge capabilities of open-source models, firmly establishing itself as the best open-source model available today. It achieves top-tier performance in coding benchmarks and significantly bridges the gap with leading closed-source models on reasoning and agentic tasks. Meanwhile, **Vedika-Code-Flash-v1-Max** achieves comparable reasoning performance to the Pro version when given a larger thinking budget, though its smaller parameter scale naturally places it slightly behind on pure knowledge tasks and the most complex agentic workflows.
+**DeepSeek-V4-Pro-Max**, the maximum reasoning effort mode of DeepSeek-V4-Pro, significantly advances the knowledge capabilities of open-source models, firmly establishing itself as the best open-source model available today. It achieves top-tier performance in coding benchmarks and significantly bridges the gap with leading closed-source models on reasoning and agentic tasks. Meanwhile, **DeepSeek-V4-Flash-Max** achieves comparable reasoning performance to the Pro version when given a larger thinking budget, though its smaller parameter scale naturally places it slightly behind on pure knowledge tasks and the most complex agentic workflows.
 
 <div align="center">
- <img src="assets/vedika_performance.png" >
+ <img src="assets/dsv4_performance.png" >
 </div>
 
 ## Model Downloads
@@ -57,10 +62,10 @@ We pre-train both models on more than **32T** diverse and high-quality tokens, f
 
 | **Model** | **#Total Params** | **#Activated Params** | **Context Length** | **Precision** | **Download** |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| Vedika-Code-Flash-v1-Base | 284B | 13B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Flash-v1-Base) |
-| Vedika-Code-Flash-v1 | 284B | 13B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Flash-v1) |
-| Vedika-Code-Pro-v1-Base | 1.6T | 49B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1-Base) |
-| Vedika-Code-Pro-v1 | 1.6T | 49B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1) |
+| DeepSeek-V4-Flash-Base | 284B | 13B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Base) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Flash-Base) |
+| DeepSeek-V4-Flash | 284B | 13B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Flash) |
+| DeepSeek-V4-Pro-Base | 1.6T | 49B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-Base) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Pro-Base) |
+| DeepSeek-V4-Pro | 1.6T | 49B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Pro) |
 
 </div>
 
@@ -72,7 +77,7 @@ We pre-train both models on more than **32T** diverse and high-quality tokens, f
 
 <div align="center">
 
-| Benchmark (Metric) | # Shots | Vedika-V3.2-Base | Vedika-Code-Flash-v1-Base | Vedika-Code-Pro-v1-Base |
+| Benchmark (Metric) | # Shots | DeepSeek-V3.2-Base | DeepSeek-V4-Flash-Base | DeepSeek-V4-Pro-Base |
 | :--- | :---: | :---: | :---: | :---: |
 | Architecture | - | MoE | MoE | MoE |
 | # Activated Params | - | 37B | 13B | 49B |
@@ -110,7 +115,7 @@ We pre-train both models on more than **32T** diverse and high-quality tokens, f
 
 ### Instruct Model
 
-Vedika-Code-Pro-v1 and Vedika-Code-Flash-v1 both support three reasoning effort modes:
+DeepSeek-V4-Pro and DeepSeek-V4-Flash both support three reasoning effort modes:
 
 | Reasoning Mode | Characteristics | Typical Use Cases | Response Format |
 | :--- | :--- | :--- | :--- |
@@ -118,11 +123,11 @@ Vedika-Code-Pro-v1 and Vedika-Code-Flash-v1 both support three reasoning effort 
 | Think High | Conscious logical analysis, slower but more accurate | Complex problem-solving, planning | `<think>` thinking `</think>` summary |
 | Think Max | Push reasoning to its fullest extent | Exploring the boundary of model reasoning capability | Special system prompt + `<think>` thinking `</think>` summary |
 
-#### Vedika-Code-Pro-v1-Max vs Frontier Models
+#### DeepSeek-V4-Pro-Max vs Frontier Models
 
 <div align="center">
 
-| Benchmark (Metric) | Opus-4.6 Max | GPT-5.4 xHigh | Gemini-3.1-Pro High | K2.6 Thinking | GLM-5.1 Thinking | Vedika-Code-Pro-v1-Max |
+| Benchmark (Metric) | Opus-4.6 Max | GPT-5.4 xHigh | Gemini-3.1-Pro High | K2.6 Thinking | GLM-5.1 Thinking | DS-V4-Pro Max |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Knowledge & Reasoning** | | | | | | |
 | MMLU-Pro (EM) | 89.1 | 87.5 | **91.0** | 87.1 | 86.0 | 87.5 |
@@ -156,7 +161,7 @@ Vedika-Code-Pro-v1 and Vedika-Code-Flash-v1 both support three reasoning effort 
 
 <div align="center">
 
-| Benchmark (Metric) | Vedika-Code-Flash-v1-Base Non-Think | Vedika-Code-Flash-v1-Base High | Vedika-Code-Flash-v1-Base Max | Vedika-Code-Pro-v1-Base Non-Think | Vedika-Code-Pro-v1-Base High | Vedika-Code-Pro-v1-Base Max |
+| Benchmark (Metric) | V4-Flash Non-Think | V4-Flash High | V4-Flash Max | V4-Pro Non-Think | V4-Pro High | V4-Pro Max |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Knowledge & Reasoning** | | | | | | |
 | MMLU-Pro (EM) | 83.0 | 86.4 | 86.2 | 82.9 | 87.1 | **87.5** |
@@ -193,11 +198,11 @@ This release does not include a Jinja-format chat template. Instead, we provide 
 A brief example:
 
 ```python
-from encoding_vedika import encode_messages, parse_message_from_completion_text
+from encoding_dsv4 import encode_messages, parse_message_from_completion_text
 
 messages = [
     {"role": "user", "content": "hello"},
-    {"role": "assistant", "content": "Hello! I am Vedika.", "reasoning_content": "thinking..."},
+    {"role": "assistant", "content": "Hello! I am DeepSeek.", "reasoning_content": "thinking..."},
     {"role": "user", "content": "1+1=?"}
 ]
 
@@ -206,13 +211,13 @@ prompt = encode_messages(messages, thinking_mode="thinking")
 
 # string -> tokens
 import transformers
-tokenizer = transformers.AutoTokenizer.from_pretrained("Veda-Labs/Vedika-Code-Pro-v1")
+tokenizer = transformers.AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V4-Pro")
 tokens = tokenizer.encode(prompt)
 ```
 
 ## How to Run Locally
 
-Please refer to the [inference](inference/README.md) folder for detailed instructions on running Vedika-Code-Pro-v1 locally, including model weight conversion and interactive chat demos.
+Please refer to the [inference](inference/README.md) folder for detailed instructions on running DeepSeek-V4 locally, including model weight conversion and interactive chat demos.
 
 For local deployment, we recommend setting the sampling parameters to `temperature = 1.0, top_p = 1.0`. For the Think Max reasoning mode, we recommend setting the context window to at least **384K** tokens.
 
@@ -223,13 +228,13 @@ This repository and the model weights are licensed under the [MIT License](LICEN
 ## Citation
 
 ```
-@misc{vedalabs2026vedikacodeprov1,
-      title={Vedika-Code-Pro-v1: Towards Highly Efficient Million-Token Context Intelligence},
-      author={Veda-Labs},
+@misc{deepseekai2026deepseekv4,
+      title={DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence},
+      author={DeepSeek-AI},
       year={2026},
 }
 ```
 
 ## Contact
 
-If you have any questions, please raise an issue or contact us at [vedalabs.veda@gmail.com](vedalabs.veda@gmail.com).
+If you have any questions, please raise an issue or contact us at [service@deepseek.com](service@deepseek.com).

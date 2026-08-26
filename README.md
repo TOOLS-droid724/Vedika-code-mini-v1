@@ -2,30 +2,30 @@
 license: mit
 library_name: transformers
 ---
-# DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence
+# Vedika-Code-Pro-v1: Towards Highly Efficient Million-Token Context Intelligence
 
 <!-- markdownlint-disable first-line-h1 -->
 <!-- markdownlint-disable html -->
 <!-- markdownlint-disable no-duplicate-header -->
 
 <div align="center">
-  <img src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg?raw=true" width="60%" alt="DeepSeek-V4" />
+  <img src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/logo.svg?raw=true" width="60%" alt="Vedika-Code-Pro-v1" />
 </div>
 <hr>
 <div align="center" style="line-height: 1;">
-  <a href="https://www.deepseek.com/" target="_blank" style="margin: 2px;">
+  <a href="https://vedalabs.online" target="_blank" style="margin: 2px;">
     <img alt="Homepage" src="https://github.com/deepseek-ai/DeepSeek-V2/blob/main/figures/badge.svg?raw=true" style="display: inline-block; vertical-align: middle;"/>
   </a>
-  <a href="https://chat.deepseek.com/" target="_blank" style="margin: 2px;">
-    <img alt="Chat" src="https://img.shields.io/badge/🤖%20Chat-DeepSeek%20V4-536af5?color=536af5&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://huggingface.co/Veda-Labs" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Vedika--Code--Pro--v1-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
   </a>
 </div>
 <div align="center" style="line-height: 1;">
-  <a href="https://huggingface.co/deepseek-ai" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DeepSeek%20AI-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://github.com/vedalabs-tech" target="_blank" style="margin: 2px;">
+    <img alt="GitHub" src="https://img.shields.io/badge/GitHub-vedalabs--tech-white?logo=github&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
   </a>
-  <a href="https://twitter.com/deepseek_ai" target="_blank" style="margin: 2px;">
-    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-deepseek_ai-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://x.com/VedaLabsAI" target="_blank" style="margin: 2px;">
+    <img alt="X (Twitter)" src="https://img.shields.io/badge/X-VedaLabsAI-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
   </a>
 </div>
 <div align="center" style="line-height: 1;">
@@ -40,17 +40,17 @@ library_name: transformers
 
 ## Introduction
 
-We present a preview version of **DeepSeek-V4** series, including two strong Mixture-of-Experts (MoE) language models — **DeepSeek-V4-Pro** with 1.6T parameters (49B activated) and **DeepSeek-V4-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**.
+We present a preview version of **Vedika-Code-Pro-v1** series, including two strong Mixture-of-Experts (MoE) language models — **Vedika-Code-Pro-v1** with 1.6T parameters (49B activated) and **Vedika-Code-Pro-v1-Flash** with 284B parameters (13B activated) — both supporting a context length of **one million tokens**.
 
-DeepSeek-V4 series incorporate several key upgrades in architecture and optimization:
+Vedika-Code-Pro-v1 series incorporate several key upgrades in architecture and optimization:
 
-1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, DeepSeek-V4-Pro requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with DeepSeek-V3.2.
+1. **Hybrid Attention Architecture:** We design a hybrid attention mechanism combining Compressed Sparse Attention (CSA) and Heavily Compressed Attention (HCA) to dramatically improve long-context efficiency. In the 1M-token context setting, Vedika-Code-Pro-v1 requires only **27% of single-token inference FLOPs** and **10% of KV cache** compared with prior models.
 2. **Manifold-Constrained Hyper-Connections (mHC):** We incorporate mHC to strengthen conventional residual connections, enhancing stability of signal propagation across layers while preserving model expressivity.
 3. **Muon Optimizer:** We employ the Muon optimizer for faster convergence and greater training stability.
 
 We pre-train both models on more than **32T** diverse and high-quality tokens, followed by a comprehensive post-training pipeline. The post-training features a two-stage paradigm: independent cultivation of domain-specific experts (through SFT and RL with GRPO), followed by unified model consolidation via on-policy distillation, integrating distinct proficiencies across diverse domains into a single model.
 
-**DeepSeek-V4-Pro-Max**, the maximum reasoning effort mode of DeepSeek-V4-Pro, significantly advances the knowledge capabilities of open-source models, firmly establishing itself as the best open-source model available today. It achieves top-tier performance in coding benchmarks and significantly bridges the gap with leading closed-source models on reasoning and agentic tasks. Meanwhile, **DeepSeek-V4-Flash-Max** achieves comparable reasoning performance to the Pro version when given a larger thinking budget, though its smaller parameter scale naturally places it slightly behind on pure knowledge tasks and the most complex agentic workflows.
+**Vedika-Code-Pro-v1-Max**, the maximum reasoning effort mode of Vedika-Code-Pro-v1, significantly advances the knowledge capabilities of open-source models, firmly establishing itself as the best open-source model available today. It achieves top-tier performance in coding benchmarks and significantly bridges the gap with leading closed-source models on reasoning and agentic tasks. Meanwhile, **Vedika-Code-Pro-v1-Flash-Max** achieves comparable reasoning performance to the Pro version when given a larger thinking budget, though its smaller parameter scale naturally places it slightly behind on pure knowledge tasks and the most complex agentic workflows.
 
 <div align="center">
  <img src="assets/dsv4_performance.png" >
@@ -62,10 +62,10 @@ We pre-train both models on more than **32T** diverse and high-quality tokens, f
 
 | **Model** | **#Total Params** | **#Activated Params** | **Context Length** | **Precision** | **Download** |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| DeepSeek-V4-Flash-Base | 284B | 13B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Base) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Flash-Base) |
-| DeepSeek-V4-Flash | 284B | 13B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Flash) |
-| DeepSeek-V4-Pro-Base | 1.6T | 49B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-Base) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Pro-Base) |
-| DeepSeek-V4-Pro | 1.6T | 49B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) \| [ModelScope](https://modelscope.cn/models/deepseek-ai/DeepSeek-V4-Pro) |
+| Vedika-Code-Pro-v1-Flash-Base | 284B | 13B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1) |
+| Vedika-Code-Pro-v1-Flash | 284B | 13B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1) |
+| Vedika-Code-Pro-v1-Base | 1.6T | 49B | 1M | FP8 Mixed | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1) |
+| Vedika-Code-Pro-v1 | 1.6T | 49B | 1M | FP4 + FP8 Mixed* | [HuggingFace](https://huggingface.co/Veda-Labs/Vedika-Code-Pro-v1) |
 
 </div>
 
@@ -77,45 +77,45 @@ We pre-train both models on more than **32T** diverse and high-quality tokens, f
 
 <div align="center">
 
-| Benchmark (Metric) | # Shots | DeepSeek-V3.2-Base | DeepSeek-V4-Flash-Base | DeepSeek-V4-Pro-Base |
-| :--- | :---: | :---: | :---: | :---: |
-| Architecture | - | MoE | MoE | MoE |
-| # Activated Params | - | 37B | 13B | 49B |
-| # Total Params | - | 671B | 284B | 1.6T |
-| **World Knowledge** | | | | |
-| AGIEval (EM) | 0-shot | 80.1 | 82.6 | **83.1** |
-| MMLU (EM) | 5-shot | 87.8 | 88.7 | **90.1** |
-| MMLU-Redux (EM) | 5-shot | 87.5 | 89.4 | **90.8** |
-| MMLU-Pro (EM) | 5-shot | 65.5 | 68.3 | **73.5** |
-| MMMLU (EM) | 5-shot | 87.9 | 88.8 | **90.3** |
-| C-Eval (EM) | 5-shot | 90.4 | 92.1 | **93.1** |
-| CMMLU (EM) | 5-shot | 88.9 | 90.4 | **90.8** |
-| MultiLoKo (EM) | 5-shot | 38.7 | 42.2 | **51.1** |
-| Simple-QA verified (EM) | 25-shot | 28.3 | 30.1 | **55.2** |
-| SuperGPQA (EM) | 5-shot | 45.0 | 46.5 | **53.9** |
-| FACTS Parametric (EM) | 25-shot | 27.1 | 33.9 | **62.6** |
-| TriviaQA (EM) | 5-shot | 83.3 | 82.8 | **85.6** |
-| **Language & Reasoning** | | | | |
-| BBH (EM) | 3-shot | **87.6** | 86.9 | 87.5 |
-| DROP (F1) | 1-shot | 88.2 | 88.6 | **88.7** |
-| HellaSwag (EM) | 0-shot | 86.4 | 85.7 | **88.0** |
-| WinoGrande (EM) | 0-shot | 78.9 | 79.5 | **81.5** |
-| CLUEWSC (EM) | 5-shot | 83.5 | 82.2 | **85.2** |
-| **Code & Math** | | | | |
-| BigCodeBench (Pass@1) | 3-shot | **63.9** | 56.8 | 59.2 |
-| HumanEval (Pass@1) | 0-shot | 62.8 | 69.5 | **76.8** |
-| GSM8K (EM) | 8-shot | 91.1 | 90.8 | **92.6** |
-| MATH (EM) | 4-shot | 60.5 | 57.4 | **64.5** |
-| MGSM (EM) | 8-shot | 81.3 | **85.7** | 84.4 |
-| CMath (EM) | 3-shot | 92.6 | **93.6** | 90.9 |
-| **Long Context** | | | | |
-| LongBench-V2 (EM) | 1-shot | 40.2 | 44.7 | **51.5** |
+| Benchmark (Metric) | # Shots | Vedika-Code-Pro-v1-Base |
+| :--- | :---: | :---: |
+| Architecture | - | MoE |
+| # Activated Params | - | 49B |
+| # Total Params | - | 1.6T |
+| **World Knowledge** | | |
+| AGIEval (EM) | 0-shot | 83.1 |
+| MMLU (EM) | 5-shot | 90.1 |
+| MMLU-Redux (EM) | 5-shot | 90.8 |
+| MMLU-Pro (EM) | 5-shot | 73.5 |
+| MMMLU (EM) | 5-shot | 90.3 |
+| C-Eval (EM) | 5-shot | 93.1 |
+| CMMLU (EM) | 5-shot | 90.8 |
+| MultiLoKo (EM) | 5-shot | 51.1 |
+| Simple-QA verified (EM) | 25-shot | 55.2 |
+| SuperGPQA (EM) | 5-shot | 53.9 |
+| FACTS Parametric (EM) | 25-shot | 62.6 |
+| TriviaQA (EM) | 5-shot | 85.6 |
+| **Language & Reasoning** | | |
+| BBH (EM) | 3-shot | 87.5 |
+| DROP (F1) | 1-shot | 88.7 |
+| HellaSwag (EM) | 0-shot | 88.0 |
+| WinoGrande (EM) | 0-shot | 81.5 |
+| CLUEWSC (EM) | 5-shot | 85.2 |
+| **Code & Math** | | |
+| BigCodeBench (Pass@1) | 3-shot | 59.2 |
+| HumanEval (Pass@1) | 0-shot | 76.8 |
+| GSM8K (EM) | 8-shot | 92.6 |
+| MATH (EM) | 4-shot | 64.5 |
+| MGSM (EM) | 8-shot | 84.4 |
+| CMath (EM) | 3-shot | 90.9 |
+| **Long Context** | | |
+| LongBench-V2 (EM) | 1-shot | 51.5 |
 
 </div>
 
 ### Instruct Model
 
-DeepSeek-V4-Pro and DeepSeek-V4-Flash both support three reasoning effort modes:
+Vedika-Code-Pro-v1 supports three reasoning effort modes:
 
 | Reasoning Mode | Characteristics | Typical Use Cases | Response Format |
 | :--- | :--- | :--- | :--- |
@@ -123,11 +123,11 @@ DeepSeek-V4-Pro and DeepSeek-V4-Flash both support three reasoning effort modes:
 | Think High | Conscious logical analysis, slower but more accurate | Complex problem-solving, planning | `<think>` thinking `</think>` summary |
 | Think Max | Push reasoning to its fullest extent | Exploring the boundary of model reasoning capability | Special system prompt + `<think>` thinking `</think>` summary |
 
-#### DeepSeek-V4-Pro-Max vs Frontier Models
+#### Vedika-Code-Pro-v1-Max vs Frontier Models
 
 <div align="center">
 
-| Benchmark (Metric) | Opus-4.6 Max | GPT-5.4 xHigh | Gemini-3.1-Pro High | K2.6 Thinking | GLM-5.1 Thinking | DS-V4-Pro Max |
+| Benchmark (Metric) | Opus-4.6 Max | GPT-5.4 xHigh | Gemini-3.1-Pro High | K2.6 Thinking | GLM-5.1 Thinking | Vedika-Code-Pro-v1 Max |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Knowledge & Reasoning** | | | | | | |
 | MMLU-Pro (EM) | 89.1 | 87.5 | **91.0** | 87.1 | 86.0 | 87.5 |
@@ -161,33 +161,33 @@ DeepSeek-V4-Pro and DeepSeek-V4-Flash both support three reasoning effort modes:
 
 <div align="center">
 
-| Benchmark (Metric) | V4-Flash Non-Think | V4-Flash High | V4-Flash Max | V4-Pro Non-Think | V4-Pro High | V4-Pro Max |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Knowledge & Reasoning** | | | | | | |
-| MMLU-Pro (EM) | 83.0 | 86.4 | 86.2 | 82.9 | 87.1 | **87.5** |
-| SimpleQA-Verified (Pass@1) | 23.1 | 28.9 | 34.1 | 45.0 | 46.2 | **57.9** |
-| Chinese-SimpleQA (Pass@1) | 71.5 | 73.2 | 78.9 | 75.8 | 77.7 | **84.4** |
-| GPQA Diamond (Pass@1) | 71.2 | 87.4 | 88.1 | 72.9 | 89.1 | **90.1** |
-| HLE (Pass@1) | 8.1 | 29.4 | 34.8 | 7.7 | 34.5 | **37.7** |
-| LiveCodeBench (Pass@1) | 55.2 | 88.4 | 91.6 | 56.8 | 89.8 | **93.5** |
-| Codeforces (Rating) | - | 2816 | 3052 | - | 2919 | **3206** |
-| HMMT 2026 Feb (Pass@1) | 40.8 | 91.9 | 94.8 | 31.7 | 94.0 | **95.2** |
-| IMOAnswerBench (Pass@1) | 41.9 | 85.1 | 88.4 | 35.3 | 88.0 | **89.8** |
-| Apex (Pass@1) | 1.0 | 19.1 | 33.0 | 0.4 | 27.4 | **38.3** |
-| Apex Shortlist (Pass@1) | 9.3 | 72.1 | 85.7 | 9.2 | 85.5 | **90.2** |
-| **Long Context** | | | | | | |
-| MRCR 1M (MMR) | 37.5 | 76.9 | 78.7 | 44.7 | 83.3 | **83.5** |
-| CorpusQA 1M (ACC) | 15.5 | 59.3 | 60.5 | 35.6 | 56.5 | **62.0** |
-| **Agentic** | | | | | | |
-| Terminal Bench 2.0 (Acc) | 49.1 | 56.6 | 56.9 | 59.1 | 63.3 | **67.9** |
-| SWE Verified (Resolved) | 73.7 | 78.6 | 79.0 | 73.6 | 79.4 | **80.6** |
-| SWE Pro (Resolved) | 49.1 | 52.3 | 52.6 | 52.1 | 54.4 | **55.4** |
-| SWE Multilingual (Resolved) | 69.7 | 70.2 | 73.3 | 69.8 | 74.1 | **76.2** |
-| BrowseComp (Pass@1) | - | 53.5 | 73.2 | - | 80.4 | **83.4** |
-| HLE w/ tools (Pass@1) | - | 40.3 | 45.1 | - | 44.7 | **48.2** |
-| MCPAtlas (Pass@1) | 64.0 | 67.4 | 69.0 | 69.4 | **74.2** | 73.6 |
-| GDPval-AA (Elo) | - | - | 1395 | - | - | **1554** |
-| Toolathlon (Pass@1) | 40.7 | 43.5 | 47.8 | 46.3 | 49.0 | **51.8** |
+| Benchmark (Metric) | Vedika-Code-Pro-v1 Non-Think | Vedika-Code-Pro-v1 High | Vedika-Code-Pro-v1 Max |
+| :--- | :---: | :---: | :---: |
+| **Knowledge & Reasoning** | | | |
+| MMLU-Pro (EM) | 82.9 | 87.1 | **87.5** |
+| SimpleQA-Verified (Pass@1) | 45.0 | 46.2 | **57.9** |
+| Chinese-SimpleQA (Pass@1) | 75.8 | 77.7 | **84.4** |
+| GPQA Diamond (Pass@1) | 72.9 | 89.1 | **90.1** |
+| HLE (Pass@1) | 7.7 | 34.5 | **37.7** |
+| LiveCodeBench (Pass@1) | 56.8 | 89.8 | **93.5** |
+| Codeforces (Rating) | - | 2919 | **3206** |
+| HMMT 2026 Feb (Pass@1) | 31.7 | 94.0 | **95.2** |
+| IMOAnswerBench (Pass@1) | 35.3 | 88.0 | **89.8** |
+| Apex (Pass@1) | 0.4 | 27.4 | **38.3** |
+| Apex Shortlist (Pass@1) | 9.2 | 85.5 | **90.2** |
+| **Long Context** | | | |
+| MRCR 1M (MMR) | 44.7 | 83.3 | **83.5** |
+| CorpusQA 1M (ACC) | 35.6 | 56.5 | **62.0** |
+| **Agentic** | | | |
+| Terminal Bench 2.0 (Acc) | 59.1 | 63.3 | **67.9** |
+| SWE Verified (Resolved) | 73.6 | 79.4 | **80.6** |
+| SWE Pro (Resolved) | 52.1 | 54.4 | **55.4** |
+| SWE Multilingual (Resolved) | 69.8 | 74.1 | **76.2** |
+| BrowseComp (Pass@1) | - | 80.4 | **83.4** |
+| HLE w/ tools (Pass@1) | - | 44.7 | **48.2** |
+| MCPAtlas (Pass@1) | 69.4 | **74.2** | 73.6 |
+| GDPval-AA (Elo) | - | - | **1554** |
+| Toolathlon (Pass@1) | 46.3 | 49.0 | **51.8** |
 
 </div>
 
@@ -202,7 +202,7 @@ from encoding_dsv4 import encode_messages, parse_message_from_completion_text
 
 messages = [
     {"role": "user", "content": "hello"},
-    {"role": "assistant", "content": "Hello! I am DeepSeek.", "reasoning_content": "thinking..."},
+    {"role": "assistant", "content": "Hello! I am Vedika.", "reasoning_content": "thinking..."},
     {"role": "user", "content": "1+1=?"}
 ]
 
@@ -211,13 +211,13 @@ prompt = encode_messages(messages, thinking_mode="thinking")
 
 # string -> tokens
 import transformers
-tokenizer = transformers.AutoTokenizer.from_pretrained("deepseek-ai/DeepSeek-V4-Pro")
+tokenizer = transformers.AutoTokenizer.from_pretrained("Veda-Labs/Vedika-Code-Pro-v1")
 tokens = tokenizer.encode(prompt)
 ```
 
 ## How to Run Locally
 
-Please refer to the [inference](inference/README.md) folder for detailed instructions on running DeepSeek-V4 locally, including model weight conversion and interactive chat demos.
+Please refer to the [inference](inference/README.md) folder for detailed instructions on running Vedika-Code-Pro-v1 locally, including model weight conversion and interactive chat demos.
 
 For local deployment, we recommend setting the sampling parameters to `temperature = 1.0, top_p = 1.0`. For the Think Max reasoning mode, we recommend setting the context window to at least **384K** tokens.
 
@@ -228,13 +228,13 @@ This repository and the model weights are licensed under the [MIT License](LICEN
 ## Citation
 
 ```
-@misc{deepseekai2026deepseekv4,
-      title={DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence},
-      author={DeepSeek-AI},
+@misc{vedalabs2026vedikacodeprov1,
+      title={Vedika-Code-Pro-v1: Towards Highly Efficient Million-Token Context Intelligence},
+      author={Veda-Labs},
       year={2026},
 }
 ```
 
 ## Contact
 
-If you have any questions, please raise an issue or contact us at [service@deepseek.com](service@deepseek.com).
+If you have any questions, please raise an issue or contact us at [vedalabs.veda@gmail.com](vedalabs.veda@gmail.com).

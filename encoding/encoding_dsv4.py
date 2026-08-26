@@ -1,7 +1,7 @@
 """
-DeepSeek-V4 Encoding
+Vedika-Code-Pro-v1 Encoding
 
-A self-contained implementation for encoding/decoding DeepSeek-V4 chat messages
+A self-contained implementation for encoding/decoding Vedika-Code-Pro-v1 chat messages
 with tool calling, thinking mode, and quick instruction task support.
 """
 
@@ -225,7 +225,7 @@ def render_message(index: int, messages: List[Dict[str, Any]], thinking_mode: st
     Render a single message at the given index into its encoded string form.
 
     This is the core function that converts each message in the conversation
-    into the DeepSeek-V4 format.
+    into the Vedika-Code-Pro-v1 format.
 
     Args:
         index: Index of the message to render.
@@ -314,7 +314,7 @@ def render_message(index: int, messages: List[Dict[str, Any]], thinking_mode: st
         prompt += LATEST_REMINDER_SP_TOKEN + latest_reminder_msg_template.format(content=content)
 
     elif role == "tool":
-        raise NotImplementedError("deepseek_v4 merges tool messages into user; please preprocess with merge_tool_messages()")
+        raise NotImplementedError("vedika_v4 merges tool messages into user; please preprocess with merge_tool_messages()")
 
     elif role == "assistant":
         thinking_part = ""
@@ -402,7 +402,7 @@ def merge_tool_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Merge tool messages into the preceding user message using content_blocks format.
 
-    DeepSeek-V4 does not have a standalone "tool" role; instead, tool results
+    Vedika-Code-Pro-v1 does not have a standalone "tool" role; instead, tool results
     are encoded as <tool_result> blocks within user messages.
 
     This function converts a standard OpenAI-format conversation (with separate
@@ -512,7 +512,7 @@ def encode_messages(
     reasoning_effort: Optional[str] = None,
 ) -> str:
     """
-    Encode a list of messages into the DeepSeek-V4 prompt format.
+    Encode a list of messages into the Vedika-Code-Pro-v1 prompt format.
 
     This is the main entry point for encoding conversations. It handles:
     - BOS token insertion

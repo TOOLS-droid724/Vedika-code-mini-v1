@@ -1,5 +1,5 @@
 """
-Test suite for DeepSeek-V4 Encoding.
+Test suite for Vedika-Code-Pro-v1 Encoding.
 
 Run: python test_encoding_dsv4.py
 """
@@ -81,7 +81,7 @@ def test_case_4():
 
 
 if __name__ == "__main__":
-    print("Running DeepSeek-V4 Encoding Tests...\n")
+    print("Running Vedika-Code-Pro-v1 Encoding Tests...\n")
     test_case_1()
     test_case_2()
     test_case_3()

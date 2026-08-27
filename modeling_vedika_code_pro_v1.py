@@ -239,7 +239,7 @@ class Indexer(torch.nn.Module):
         self.index_topk = config.index_topk
         self.q_lora_rank = config.q_lora_rank
         self.wq_b = nn.Linear(self.q_lora_rank, self.n_heads * self.head_dim, bias=False)
-        self.weights_proj = nn.Linear(self.dim, self.n_heads, bias=False, dtype=torch.bfloat16)
+        self.weights_proj = nn.Linear(self.dim, self.n_heads, bias=False)
         self.softmax_scale = self.head_dim ** -0.5
         self.compress_ratio = compress_ratio
 
@@ -376,8 +376,8 @@ class Attention(nn.Module):
         apply_rotary_emb(o[..., -rd:], freqs_cis, True)
 
         # o
-        o = o.view(bsz, seqlen, self.n_groups, -1)
-        wo_a = self.wo_a.weight.view(self.n_groups, self.o_lora_rank, -1)
+        o = o.reshape(bsz, seqlen, self.n_groups, -1)
+        wo_a = self.wo_a.weight.view(self.n_groups, self.o_lora_rank, -1).to(o.dtype)
         o = torch.einsum("bsgd,grd->bsgr", o, wo_a)
         x = self.wo_b(o.flatten(2))
         return x
@@ -389,29 +389,29 @@ class Attention(nn.Module):
         bsz, seqlen, n_heads, head_dim = q.size()
         kv_seqlen = kv.size(1)
         
-        # Gather kv values at topk indices
-        topk_idxs_flat = topk_idxs.view(bsz, seqlen, -1)
-        valid_mask = topk_idxs_flat >= 0
-        
-        # Expand q to match kv dims for gathering
-        q_expanded = q.view(bsz, seqlen, n_heads, 1, head_dim)
-        
         # Simple dense attention fallback for compatibility
-        attn_weights = torch.einsum("bshd,bthd->bsht", q, kv) * softmax_scale
+        # q: [bsz, seqlen, n_heads, head_dim]
+        # kv: [bsz, kv_seqlen, head_dim] -> need to expand to multi-head
+        kv_expanded = kv.unsqueeze(2).expand(-1, -1, n_heads, -1)  # [bsz, kv_seqlen, n_heads, head_dim]
         
-        # Apply sparse mask based on topk_idxs
+        # Compute attention weights: [bsz, seqlen, n_heads, kv_seqlen]
+        attn_weights = torch.einsum("bshd,bthn->bsht", q, kv_expanded) * softmax_scale
+        
+        # Create mask for valid positions based on topk_idxs
         mask = torch.full((bsz, seqlen, n_heads, kv_seqlen), float("-inf"), device=q.device, dtype=q.dtype)
+        topk_idxs_flat = topk_idxs.view(bsz, seqlen, -1)
         for i in range(topk_idxs_flat.size(-1)):
             idxs = topk_idxs_flat[:, :, i]
             valid = idxs >= 0
-            batch_idx = torch.arange(bsz, device=q.device).view(-1, 1, 1)
-            seq_idx = torch.arange(seqlen, device=q.device).view(1, -1, 1)
-            head_idx = torch.arange(n_heads, device=q.device).view(1, 1, -1)
-            mask[batch_idx, seq_idx, head_idx, idxs] = torch.where(valid, torch.tensor(0.0, device=q.device), torch.tensor(float("-inf"), device=q.device))
+            batch_idx = torch.arange(bsz, device=q.device).view(-1, 1, 1, 1)
+            seq_idx = torch.arange(seqlen, device=q.device).view(1, -1, 1, 1)
+            head_idx = torch.arange(n_heads, device=q.device).view(1, 1, -1, 1)
+            # Mark valid positions with 0 (will be added to attn_weights)
+            mask[batch_idx, seq_idx, head_idx, idxs] = torch.where(valid.squeeze(-1), torch.tensor(0.0, device=q.device), torch.tensor(float("-inf"), device=q.device))
         
         attn_weights = attn_weights + mask
         attn_probs = attn_weights.softmax(dim=-1)
-        o = torch.einsum("bsht,bthd->bshd", attn_probs, kv)
+        o = torch.einsum("bsht,bthn->bshn", attn_probs, kv_expanded)
         return o
 
 
@@ -444,9 +444,9 @@ class Gate(nn.Module):
         if self.bias is not None:
             scores = scores + self.bias
         if self.hash:
-            indices = self.tid2eid[input_ids]
+            indices = self.tid2eid[input_ids.long()]  # Ensure int64 for indexing
         else:
-            indices = scores.topk(self.topk, dim=-1)[1]
+            indices = scores.topk(self.topk, dim=-1)[1].long()  # Ensure int64 dtype
         weights = original_scores.gather(1, indices)
         if self.score_func != "softmax":
             weights /= weights.sum(dim=-1, keepdim=True)
@@ -703,12 +703,15 @@ class VedikaCodeProV1ForCausalLM(PreTrainedModel):
             hidden_states = layer(hidden_states, start_pos, input_ids if input_ids is not None else inputs_embeds.argmax(-1))
         
         # Apply HC head for final logits
-        shape, dtype = hidden_states.size(), hidden_states.dtype
-        hidden_states_flat = hidden_states.flatten(2).float()
+        shape = hidden_states.size()  # [bsz, seq_len, hc_mult, hidden_size]
+        dtype = hidden_states.dtype
+        hidden_states_flat = hidden_states.flatten(2).float()  # [bsz, seq_len, hc_mult * hidden_size]
         rsqrt = torch.rsqrt(hidden_states_flat.square().mean(-1, keepdim=True) + self.config.rms_norm_eps)
         mixes = F.linear(hidden_states_flat, self.hc_head_fn) * rsqrt
         pre = torch.sigmoid(mixes * self.hc_head_scale + self.hc_head_base) + self.config.hc_eps
-        hidden_states = torch.sum(pre.unsqueeze(-1) * hidden_states_flat.view(shape), dim=2).to(dtype)
+        # Reshape pre to match hidden_states dimensions for multiplication
+        pre = pre.view(shape)  # [bsz, seq_len, hc_mult, hidden_size]
+        hidden_states = torch.sum(pre * hidden_states_flat.view(shape), dim=2).to(dtype)
         
         hidden_states = self.norm(hidden_states)
         # Take last token for logits
